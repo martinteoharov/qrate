@@ -65,7 +65,7 @@ a:hover {
 ============================ */
 .navbar-brand {
   float: left;
-  height: 50px;
+  height: 25px;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
@@ -170,7 +170,7 @@ a:hover {
 #carousel-slider a i {
 	border-radius:50%;
 	font-size: 30px;
-	height: 50px;
+	height: 25px;
 	padding: 10px;
 	position: absolute;
 	top: 50%;
@@ -317,7 +317,7 @@ a:hover {
   height: 60px;
   text-align: center;
   display: inline-block;
-  line-height: 56px;
+  line-height: 23px;
 }
 
 .btn-gamp a:hover {
