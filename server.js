@@ -6,7 +6,8 @@ const port       = 3000;
 const app        = express();
 
 app.use(bodyParser.json());
-app.use(express.static('static'))
+app.use(express.static('static'));
+app.use(express.static('node_modules/qr-scanner'));
 
 
 const server = app.listen(port, () => {
