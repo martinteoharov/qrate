@@ -1,10 +1,9 @@
 const video = document.getElementById('scanner');
 
-// Doesn't work for mobile for some reason
 const scanQR = () => {
   console.log('scanQR:');
   const videoConstraints = {
-    facingMode:'user'
+    facingMode:'environment'
   };
 
   const constraints = {
