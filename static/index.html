@@ -23,6 +23,9 @@
 </head>
 
 <body>
+  <script src='js/smooth-scroll.js'></script>
+
+
   <style>
   #main-img {
 
@@ -98,10 +101,10 @@
 
             <div class="carousel-caption">
 
-              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.9s">
-                <form class="form-inline">
+              <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.4s">
+                <div class="form-inline">
                   <div class="form-group">
-                    <button type="livedemo" name="Live Demo" class="btn btn-primary btn-lg" required="required">QR code</button>
+                    <button id='scanQR' onclick='scanQR()' type="livedemo" name="Live Demo" class="btn btn-primary btn-lg" required="required">QR code</button>
                   </div>
                   <div class="form-group">
                     <button type="getnow" name="Get Now" class="btn btn-primary btn-lg" required="required">2D model</button>
@@ -116,6 +119,10 @@
     </div>
     <!--/#about-slider-->
   </div>
+  <video id="scanner" width="100%" height="auto" autoplay>
+    Your browser does not support HTML5 video.
+  </video>
+  <script src='js/qrcode.js'></script>
   <!--/#slider-->
 
   <div class="services">
