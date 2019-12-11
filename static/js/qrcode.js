@@ -1,7 +1,8 @@
 import QrScanner from "../qr-scanner.min.js";
 
-const video = document.getElementById('scanner');
-const button = document.getElementById('scanQR');
+const video   = document.getElementById('scanner');
+const button  = document.getElementById('scanQR');
+const display = document.getElementById('display');
 
 button.onclick = () => {
   console.log('scanQR:');
@@ -19,7 +20,7 @@ button.onclick = () => {
     .then(stream => {
       video.srcObject = stream;
       EPPZScrollTo.scrollVerticalToElementById('scanner', 20);
-      const scanner = new QrScanner(video, result => console.log(result));
+      const scanner = new QrScanner(video, result => display.innerText = result);
       scanner.start();
     })
     .catch(error => {
