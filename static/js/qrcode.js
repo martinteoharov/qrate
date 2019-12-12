@@ -20,7 +20,7 @@ button.onclick = () => {
     .then(stream => {
       video.srcObject = stream;
       EPPZScrollTo.scrollVerticalToElementById('scanner', 20);
-      const scanner = new QrScanner(video, result => display.innerText = result);
+      const scanner = new QrScanner(video, result => display.innerText = result, 1080);
       scanner.start();
     })
     .catch(error => {
