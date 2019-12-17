@@ -35,6 +35,15 @@ app.use(express.static('node_modules/qr-scanner'));
 app.get('/gallery', (req, res) => {
 	res.sendFile(__dirname + '/static/gallery.html');
 });
+
+app.get('/addinfo', (req, res) => {
+	console.log(req.query.pass);
+	
+	//improvised solution but good enough
+	req.query.pass == 38132874 ? res.sendFile(__dirname + '/static/addinfo.html') : null;
+	
+});
+
 const server = app.listen(port, () => {
 	console.log('Listening on', port);
 });
