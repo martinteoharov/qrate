@@ -4,6 +4,7 @@ const video   = document.getElementById('scanner');
 const button  = document.getElementById('scanQR');
 const display = document.getElementById('display');
 
+
 button.onclick = () => {
 	console.log('scanQR:');
 	const videoConstraints = {
