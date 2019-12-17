@@ -75,16 +75,19 @@
 			</div>
 		</div>
 		<div id='addInfoDom' class="container" style='display:none'>
-			<input type='name'    placeholder='Painting Name'></input>
-			<textarea type='boxtext'></textarea>
-
+			<form id='form_painting'>
+				<input id='painting_id' type='name' placeholder='id'></input>
+				<input id='painting_name' type='name' placeholder='Painting Name'></input>
+				<textarea id='painting_text' type='boxtext'></textarea>
+			</form>
 			<div class="col-md-1 col-md-offset-8 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="200ms">
-				<button type="livedemo" name="Live Demo" class="btn btn-primary btn-lg btn-save" required="required">Save</button>
+				<button id='saveInfoBtn' type='submit' form='form_painting' class="btn btn-primary btn-lg btn-save">Save</button>
 			</div>
 		</div>
 
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src='js/common.js'></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/jquery-migrate.min.js"></script>
 		<!-- Include all compiled plugins (below), or include individual files as needed -->

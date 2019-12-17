@@ -8,24 +8,13 @@ const app          = express();
 //set up mongo client
 const MongoClient  = require('mongodb').MongoClient;
 const url          = 'mongodb://localhost/test';
-MongoClient.connect(url, (err, client) => {
+let collection;
+MongoClient.connect(url, (err, cli) => {
 	if(err) throw err;
 	else console.log('mongodb connected');
 
-
-	const db = client.db('qrate');
-	const collection = db.collection('paintings');
-
-	collection.findOneAndUpdate(
-		{ id : 3128040 },
-		{ $inc : { id: 1 } },
-	);
-	collection.findOne({}, (err, result) => {
-		if (err) throw err;
-		console.log(result);
-	});
-
-	client.close();
+	const db = cli.db('qrate');
+	collection = db.collection('paintings');
 });
 
 app.use(bodyParser.json());
@@ -37,11 +26,15 @@ app.get('/gallery', (req, res) => {
 });
 
 app.get('/addinfo', (req, res) => {
-	console.log(req.query.pass);
-	
 	//improvised solution but good enough
 	req.query.pass == 38132874 ? res.sendFile(__dirname + '/static/addinfo.html') : null;
 	
+});
+app.post('/addinfo/38132874', (req, res) => {
+	collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
+	//fix this shit
+	collection.createIndex({'id': 2}, {unique: true});
+
 });
 
 const server = app.listen(port, () => {
