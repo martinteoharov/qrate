@@ -1,8 +1,9 @@
-const servicesDom = document.getElementsByClassName('services')[0];
-const addInfoDom  = document.getElementById('addInfoDom');
-const addInfoBtn  = document.getElementById('addInfoBtn');
-const saveInfoBtn = document.getElementById('saveInfoBtn');
-const formDom     = document.getElementById('form_painting');
+const servicesDom   = document.getElementsByClassName('services')[0];
+const addInfoDom    = document.getElementById('addInfoDom');
+const changeInfoDom = document.getElementById('changeInfoDom');
+const addInfoBtn    = document.getElementById('addInfoBtn');
+const saveInfoBtn   = document.getElementById('saveInfoBtn');
+const formDom       = document.getElementById('form_painting');
 
 
 // id input box
@@ -16,14 +17,32 @@ saveInfoBtn.onclick = () => {
 	const boxVal  = document.getElementById('painting_text').value;
 	const idVal   = idInput.value;
 
-	
-
 	//send data
-	//TODO: security
-	fetchPost({name: nameVal, text: boxVal, id: idVal}, '/addinfo/38132874');
+	const url = '/addinfo/38132874';
+	const items = {name: nameVal, text: boxVal, id: idVal};
+	fetchPost(url, items).then((res) => {
+		if(res.status === 200){
+			console.log('success');
+			new Noty({
+				type: 'success',
+				layout: 'topRight',
+				text: 'Saved',
+				theme: 'relax'
+			}).show();
+		}
+		else {
+			new Noty({
+				type: 'failure',
+				layout: 'topRight',
+				text: 'Data send failed'
+			}).show();
+		}
+	});
 }
 
 addInfoBtn.onclick = () => {
+	changeInfoDom.innerHTML  = '';
+	changeInfoDom.style.display    = 'none';
 	addInfoDom.style.display = '';
 	EPPZScrollTo.scrollVerticalToElementById('addInfoDom', 0);
 }

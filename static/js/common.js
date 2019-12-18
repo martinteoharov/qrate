@@ -1,28 +1,24 @@
-const fetchPost = (body, url) => {
-	fetch(url, {
+const fetchPost = async (url, body) => {
+	console.log('fetchPost');
+	const response = await fetch(url, {
 		method: "POST",
 		headers: {
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(body)
-	})
-	.then((res) => {
-		if(res.status === 200){
-			new Noty({
-				theme: 'relax',
-				type: 'success',
-				layout: 'topRight',
-				text: 'Saved'
-			}).show();
-		}
-		else {
-			new Noty({
-				type: 'failure',
-				layout: 'topRight',
-				text: 'Sending failed'
-			}).show();
+	});
+	return await response.json(); // parses JSON response into native JavaScript objects
+}
 
+const fetchGet = async (url) => {
+	console.log('fetchGet');
+	const response = await fetch(url, {
+		method: "GET",
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json'
 		}
-	})
+	});
+	return await response.json(); // parses JSON response into native JavaScript objects
 }

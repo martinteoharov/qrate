@@ -69,7 +69,7 @@
 
 					</div>
 					<div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
-						<button type="livedemo" name="Live Demo" class="btn btn-primary btn-lg btn-addinfo" required="required">Change painting data</button>
+						<button id='changeInfoBtn' type="livedemo" name="Live Demo" class="btn btn-primary btn-lg btn-addinfo" required="required">Change painting data</button>
 					</div>
 					<div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
 						<button type="livedemo" name="Live Demo" class="btn btn-primary btn-lg btn-addinfo" required="required">Analyze data</button>
@@ -78,14 +78,17 @@
 			</div>
 		</div>
 		<div id='addInfoDom' class="container" style='display:none'>
-			<form id='form_painting'>
-				<input id='painting_id' type='name' placeholder='id'></input>
-				<input id='painting_name' type='name' placeholder='Painting Name'></input>
-				<textarea id='painting_text' type='boxtext'></textarea>
-			</form>
-			<div class="col-md-1 col-md-offset-8 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="200ms">
-				<button id='saveInfoBtn' type='submit' form='form_painting' class="btn btn-primary btn-lg btn-save">Save</button>
-			</div>
+			<input id='painting_id' type='name' placeholder='id'></input>
+			<input id='painting_name' type='name' placeholder='Painting Name'></input>
+			<textarea id='painting_text' type='boxtext'></textarea>
+			<button id='saveInfoBtn' type='submit' form='form_painting' class="btn btn-primary btn-lg btn-save">Save</button>
+		</div>
+		<div id='changeInfoDom' class='container' style='display:none'>
+		</div>
+		<div id='example-p' class='container-33 col-md-4' style='display:none'>
+			<p style='width:100%;height:10%'></p>
+			<p style='width:100%;height:10%'></p>
+			<p style='width:100%;height:80%;'></p>
 		</div>
 
 
@@ -98,6 +101,7 @@
 		<script src="js/wow.min.js"></script>
 		<script src='js/smooth-scroll.js'></script>
 		<script src="js/addpainting.js"></script>
+		<script src="js/changepainting.js"></script>
 		<script>
 			wow = new WOW({}).init();
 		</script>

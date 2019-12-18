@@ -2324,12 +2324,13 @@ th {
 	}
 	input[type="name"] {
 		color: black;
-		width: 20%;
-		margin-left: 40%;
+		width: 40%;
+		margin-left: 30%;
+		margin-top:  0.5%;
 	}
 	textarea[type="boxtext"] {
 		color: black;
-		width: 50%;
+		width: 80%;
 		height: 50rem;
 		padding: 12px 20px;
 		box-sizing: border-box;
@@ -2337,8 +2338,8 @@ th {
 		border-radius: 4px;
 		background-color: #f8f8f8;
 		resize: none;
-		margin-top: 2.5%;
-		margin-left:25%;
+		margin-top: .5%;
+		margin-left:10%;
 	}
 	input[type="radio"],
 	input[type="checkbox"] {
@@ -2876,6 +2877,10 @@ th {
 	}
 	.btn-save {
 		height: 4rem;
+		margin-bottom:3.5%;
+	}
+	div.container-33 {
+		height:50rem;
 	}
 	.btn-primary:hover,
 	.btn-primary:focus,
