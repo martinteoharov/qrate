@@ -15,11 +15,13 @@ MongoClient.connect(url, (err, cli) => {
 
 	const db = cli.db('qrate');
 	collection = db.collection('paintings');
+	collection.createIndex({'id': 1}, {unique: true});
 });
 
 app.use(bodyParser.json());
 app.use(express.static('static'));
 app.use(express.static('node_modules/qr-scanner'));
+app.use(express.static('node_modules/noty'));
 
 app.get('/gallery', (req, res) => {
 	res.sendFile(__dirname + '/static/gallery.html');
@@ -32,8 +34,8 @@ app.get('/addinfo', (req, res) => {
 });
 app.post('/addinfo/38132874', (req, res) => {
 	collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
-	//fix this shit
-	collection.createIndex({'id': 2}, {unique: true});
+	if(err) res.json({status:400});
+	else res.json({status:200});
 
 });
 
