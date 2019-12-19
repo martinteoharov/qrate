@@ -23,7 +23,6 @@ changeInfoBtn.onclick = () => {
 			copy.childNodes[5].innerText = e.text;
 			changeInfoDom.append(copy);
 		}
-		//this doesnt work
 		EPPZScrollTo.scrollVerticalToElementById('example-p', 0);
 	});
 
