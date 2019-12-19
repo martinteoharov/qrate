@@ -2331,7 +2331,7 @@ th {
 	textarea[type="boxtext"] {
 		color: black;
 		width: 80%;
-		height: 50rem;
+		height: 60rem;
 		padding: 12px 20px;
 		box-sizing: border-box;
 		border: 2px solid #ccc;
@@ -2880,7 +2880,8 @@ th {
 		margin-bottom:3.5%;
 	}
 	div.container-33 {
-		height:50rem;
+		min-height: 100px;
+		overflow: hidden;
 	}
 	.btn-primary:hover,
 	.btn-primary:focus,
