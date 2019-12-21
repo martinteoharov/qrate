@@ -32,8 +32,8 @@ const newNoty = (type, message) => {
 		theme: 'relax',
 		timeout: 2000,
 		animation: {
-			open: 'animated fadeInDown',
-			close: 'animated fadeOutUp'
+			open: 'animated fadeInRight',
+			close: 'animated fadeOutRight'
 		}
 	}).show();
 }

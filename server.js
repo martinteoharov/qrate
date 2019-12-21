@@ -32,6 +32,11 @@ app.get('/addinfo', (req, res) => {
 	req.query.pass == 38132874 ? res.sendFile(__dirname + '/static/addinfo.html') : null;
 	
 });
+app.get('/addinfo/list/38132874', (req, res) => {
+	const data = collection.find().toArray((err, docs) => {
+		res.json({body:docs});
+	});
+});
 app.post('/addinfo/38132874', (req, res) => {
 	//TODO: security & data validity check
 	console.log('insert new element with id:', req.body.id);
@@ -40,7 +45,7 @@ app.post('/addinfo/38132874', (req, res) => {
 });
 app.post('/addinfo/change/38132874', (req, res) => {
 	//TODO: security & data validity check
-	console.log('change info in element with id:', req.body.id);
+	console.log('change element with id:', req.body.id);
 	collection.updateOne(
 		{ id: req.body.id },
 		{
@@ -53,10 +58,14 @@ app.post('/addinfo/change/38132874', (req, res) => {
 	)
 	res.json({status:200});
 });
-app.get('/addinfo/list/38132874', (req, res) => {
-	const data = collection.find().toArray((err, docs) => {
-		res.json({body:docs});
-	});
+app.post('/addinfo/delete/38132874', (req, res) => {
+	//TODO: security & data validity check
+	console.log('delete element with id:', req.body.id);
+	collection.remove(
+		{id: req.body.id},
+		{justOne: true}
+	)
+	res.json({status:200});
 });
 
 const server = app.listen(port, () => {
