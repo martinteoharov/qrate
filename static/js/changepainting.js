@@ -40,6 +40,13 @@ changeInfoBtn.onclick = () => {
 				const obj = { id:copy.childNodes[3].innerText, qr: qrVal, name: nameVal, text: textVal };
 				fetchPost(urlUpload, obj).then((res) => {
 					console.log(res);
+					if(res.status === 200){
+						newNoty('success', 'Saved');
+					}
+					else{ 
+						newNoty('error', 'Could Not Be Saved');
+					}
+
 				});
 
 			}

@@ -22,3 +22,18 @@ const fetchGet = async (url) => {
 	});
 	return await response.json(); // parses JSON response into native JavaScript objects
 }
+
+const newNoty = (type, message) => {
+	console.log('newNoty:');
+	new Noty({
+		type: type,
+		layout: 'topRight',
+		text: message,
+		theme: 'relax',
+		timeout: 2000,
+		animation: {
+			open: 'animated fadeInDown',
+			close: 'animated fadeOutUp'
+		}
+	}).show();
+}

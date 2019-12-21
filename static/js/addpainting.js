@@ -20,20 +20,10 @@ saveInfoBtn.onclick = () => {
 	const items = {qr: qrVal, name: nameVal, text: boxVal, id: idVal};
 	fetchPost(url, items).then((res) => {
 		if(res.status === 200){
-			console.log('success');
-			new Noty({
-				type: 'success',
-				layout: 'topRight',
-				text: 'Saved',
-				theme: 'relax'
-			}).show();
+			newNoty('success', 'Saved');
 		}
 		else {
-			new Noty({
-				type: 'failure',
-				layout: 'topRight',
-				text: 'Data send failed'
-			}).show();
+			newNoty('error', 'Could Not Be Saved');
 		}
 	});
 }
