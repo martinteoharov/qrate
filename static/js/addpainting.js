@@ -39,9 +39,11 @@ saveInfoBtn.onclick = () => {
 }
 
 addInfoBtn.onclick = () => {
+
 	changeInfoDom.innerHTML  = '';
 	changeInfoDom.style.display    = 'none';
 	addInfoDom.style.display = '';
 	idInput.value = Math.floor(Math.random()*10000000);
 	EPPZScrollTo.scrollVerticalToElementById('addInfoDom', 0);
+	
 }
