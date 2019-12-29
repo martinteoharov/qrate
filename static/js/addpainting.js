@@ -4,6 +4,7 @@ const changeInfoDom = document.getElementById('changeInfoDom');
 const addInfoBtn    = document.getElementById('addInfoBtn');
 const saveInfoBtn   = document.getElementById('saveInfoBtn');
 const formDom       = document.getElementById('form_painting');
+const loader        = document.getElementsByClassName('loader')[0];
 
 // id input box
 const idInput     = document.getElementById('painting_id');

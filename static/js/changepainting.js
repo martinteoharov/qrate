@@ -16,7 +16,9 @@ changeInfoBtn.onclick = () => {
 	const urlUpload = 'addinfo/change/38132874';
 	const urlDelete = 'addinfo/delete/38132874';
 
+	loader.style.display = '';
 	fetchGet(urlLoad).then((res) => {
+		loader.style.display = 'none';
 		console.log(res.body);
 		for( e of res.body ){
 			const copy = exampleContP.cloneNode(true);
