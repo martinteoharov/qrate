@@ -5,7 +5,8 @@ const button  = document.getElementById('scanQR');
 const display = document.getElementById('display');
 
 const result = (id) => {
-	window.href = 'localhost:3000/exponent?id=' + id;
+	console.log(id);
+	window.href = 'auditorium.tk/exponent?id=' + id;
 }
 
 button.onclick = () => {
