@@ -1,5 +1,5 @@
 const id = location.href.substr(location.href.indexOf('?') + 4);
-const DOM = document.getElementsByClassName('container-33')[0];
+const DOM = document.getElementsByClassName('container-100')[0];
 
 fetchGet('/exponent/' + id).then((body) => {
 	console.log(body.body);
