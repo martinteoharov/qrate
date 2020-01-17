@@ -26,6 +26,26 @@ app.use(express.static('node_modules/noty'));
 app.get('/gallery', (req, res) => {
 	res.sendFile(__dirname + '/static/gallery.html');
 });
+app.get('/exponent', (req, res) => {
+	/*
+	const options = {
+		headers: {
+			'name': 'NAME',
+			'text': 'TEXT'
+		}
+	}
+	*/
+	res.sendFile(__dirname + '/static/exponent.html');
+});
+app.get('/exponent/:id', (req, res) => {
+	const id = req.params.id;
+	let obj;
+	collection.findOne({"id": id}, (err, result) => {
+		obj = result;
+		console.log(obj);
+		res.json({"id": id, "body": obj});
+	});
+});
 
 app.get('/addinfo', (req, res) => {
 	//TODO: security & data validity check
@@ -40,7 +60,7 @@ app.get('/addinfo/list/38132874', (req, res) => {
 app.post('/addinfo/38132874', (req, res) => {
 	//TODO: security & data validity check
 	console.log('insert new element with id:', req.body.id);
-	collection.insertOne({id: req.body.id, qr: req.body.qr, name: req.body.name, text: req.body.text});
+	collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
 	res.json({status:200});
 });
 app.post('/addinfo/change/38132874', (req, res) => {

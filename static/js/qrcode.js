@@ -4,6 +4,10 @@ const video   = document.getElementById('scanner');
 const button  = document.getElementById('scanQR');
 const display = document.getElementById('display');
 
+const result = (id) => {
+	console.log(id);
+	window.location = '/exponent?id=' + id;
+}
 
 button.onclick = () => {
 	console.log('scanQR:');
@@ -21,9 +25,8 @@ button.onclick = () => {
 		.then(stream => {
 			video.style.display = '';
 			video.srcObject = stream;
-
 			EPPZScrollTo.scrollVerticalToElementById('scanner', 0);
-			const scanner = new QrScanner(video, result => display.innerText = result, 1080);
+			const scanner = new QrScanner(video, id => result(id), 400);
 			scanner.start();
 		})
 		.catch(error => {

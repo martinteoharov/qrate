@@ -19,14 +19,13 @@ changeInfoBtn.onclick = () => {
 	loader.style.display = '';
 	fetchGet(urlLoad).then((res) => {
 		loader.style.display = 'none';
-		console.log(res.body);
+		console.log(res);
 		for( e of res.body ){
 			const copy = exampleContP.cloneNode(true);
 			copy.style.display = '';
 			copy.childNodes[5].innerText = e.id;
-			copy.childNodes[7].innerText = e.qr;
-			copy.childNodes[9].innerText = e.name;
-			copy.childNodes[11].innerText = e.text;
+			copy.childNodes[7].innerText = e.name;
+			copy.childNodes[9].innerText = e.text;
 
 			copy.ondblclick = () => {
 				copy.childNodes[7].setAttribute('contenteditable', true);
@@ -37,11 +36,10 @@ changeInfoBtn.onclick = () => {
 			copy.childNodes[1].onclick = () => {
 				console.log('save changes');
 				const idVal   = copy.childNodes[5].innerText;
-				const qrVal   = copy.childNodes[7].innerText;
-				const nameVal = copy.childNodes[9].innerText;
-				const textVal = copy.childNodes[11].innerText;
+				const nameVal = copy.childNodes[7].innerText;
+				const textVal = copy.childNodes[9].innerText;
 
-				const obj = { id:copy.childNodes[5].innerText, qr: qrVal, name: nameVal, text: textVal };
+				const obj = { id:copy.childNodes[5].innerText, name: nameVal, text: textVal };
 				fetchPost(urlUpload, obj).then((res) => {
 					console.log(res);
 					if(res.status === 200){
