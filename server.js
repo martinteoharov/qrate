@@ -26,6 +26,26 @@ app.use(express.static('node_modules/noty'));
 app.get('/gallery', (req, res) => {
 	res.sendFile(__dirname + '/static/gallery.html');
 });
+app.get('/exponent', (req, res) => {
+	/*
+	const options = {
+		headers: {
+			'name': 'NAME',
+			'text': 'TEXT'
+		}
+	}
+	*/
+	res.sendFile(__dirname + '/static/exponent.html');
+});
+app.get('/exponent/:id', (req, res) => {
+	const id = req.params.id;
+	let obj;
+	collection.findOne({"id": id}, (err, result) => {
+		obj = result;
+		console.log(obj);
+		res.json({"id": id, "body": obj});
+	});
+});
 
 app.get('/addinfo', (req, res) => {
 	//TODO: security & data validity check
