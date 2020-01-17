@@ -1430,6 +1430,11 @@ th {
 			width: 1170px;
 		}
 	}
+	@media (min-width: 1800px) {
+		.container {
+			width: 1770px;
+		}
+	}
 	.container-fluid {
 		padding-right: 15px;
 		padding-left: 15px;
@@ -2902,11 +2907,16 @@ th {
 		margin-bottom:3.5%;
 	}
 	div.container-33 {
-		min-height: 100px;
-		border-style: solid;
-		border-width: thin;
-		border-color: #f7f7f7;
-		overflow: hidden;
+		min-height:     100px;
+		border-style:   solid;
+		border-width:   thin;
+		width:          33.3%;
+		border-color:   #f7f7f7;
+		overflow:       hidden;
+		display:        -moz-inline-stack;
+		display:        inline-block;
+		vertical-align: top;
+	        *display:       inline;
 	}
 	.btn-primary:hover,
 	.btn-primary:focus,
