@@ -6,7 +6,7 @@ const display = document.getElementById('display');
 
 const result = (id) => {
 	console.log(id);
-	window.href = 'auditorium.tk/exponent?id=' + id;
+	window.href = 'qrate.ddns.net/exponent?id=' + id;
 }
 
 button.onclick = () => {
