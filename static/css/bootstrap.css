@@ -2351,8 +2351,8 @@ th {
 	}
 	input[type="name"] {
 		color: black;
-		width: 40%;
-		margin-left: 30%;
+		width: 80%;
+		margin-left: 10%;
 		margin-top:  0.5%;
 	}
 	textarea[type="boxtext"] {
