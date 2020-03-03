@@ -2351,8 +2351,8 @@ th {
 	}
 	input[type="name"] {
 		color: black;
-		width: 40%;
-		margin-left: 30%;
+		width: 80%;
+		margin-left: 10%;
 		margin-top:  0.5%;
 	}
 	textarea[type="boxtext"] {
@@ -2906,18 +2906,35 @@ th {
 		height: 4rem;
 		margin-bottom:3.5%;
 	}
-	div.container-33 {
-		min-height:     100px;
-		border-style:   solid;
-		border-width:   thin;
-		width:          33.3%;
-		border-color:   #f7f7f7;
-		overflow:       hidden;
-		display:        -moz-inline-stack;
-		display:        inline-block;
-		vertical-align: top;
-	        *display:       inline;
+	@media (min-width: 768px) {
+		div.container-33 {
+			min-height:     100px;
+			border-style:   solid;
+			border-width:   thin;
+			width:          33.3%;
+			border-color:   #f7f7f7;
+			overflow:       hidden;
+			display:        -moz-inline-stack;
+			display:        inline-block;
+			vertical-align: top;
+			*display:       inline;
+		}
 	}
+	@media (max-width: 768px) {
+		div.container-33 {
+			min-height:     100px;
+			border-style:   solid;
+			border-width:   thin;
+			width:          100%;
+			border-color:   #f7f7f7;
+			overflow:       hidden;
+			display:        -moz-inline-stack;
+			display:        inline-block;
+			vertical-align: top;
+			*display:       inline;
+		}
+	}
+
 	div.container-100 {
 		min-height:     100px;
 		border-style:   solid;
