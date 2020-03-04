@@ -1,5 +1,3 @@
-import QrScanner from "../qr-scanner.min.js";
-
 const video   = document.getElementById('scanner');
 const button  = document.getElementById('scanQR');
 const display = document.getElementById('display');
@@ -26,8 +24,21 @@ button.onclick = () => {
 			video.style.display = '';
 			video.srcObject = stream;
 			EPPZScrollTo.scrollVerticalToElementById('scanner', 0);
-			const scanner = new QrScanner(video, link => result(link), 720);
-			scanner.start();
+
+			//Using instascan now - very nice
+			const scanner = new Instascan.Scanner({ 'video': video });
+			scanner.addListener('scan', (content) => {
+				console.log(content);
+			});
+			Instascan.Camera.getCameras().then((cameras) => {
+				cameras.length > 0 ? scanner.start(cameras[0]) : console.error('No cameras found.');
+			}).catch((e) => {
+				console.error(e);
+			});
+			
+			//Old scanner - very shite
+			//const scanner = new QrScanner(video, link => result(link), 720);
+			//scanner.start();
 		})
 		.catch(error => {
 			console.error(error);
