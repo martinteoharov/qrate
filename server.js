@@ -9,8 +9,8 @@ const mongoose = require('mongoose');
 //set up mongo client
 const MongoClient  = require('mongodb').MongoClient;
 const url          = 'mongodb://localhost/test';
-var User = require('./static/js/galleryUser');
-var session = require('express-session');
+const User = require('./static/js/galleryUser');
+const session = require('express-session');
 let collection;
 
 MongoClient.connect(url, (err, cli) => {
@@ -23,11 +23,11 @@ MongoClient.connect(url, (err, cli) => {
 });
 
 mongoose.connect('mongodb://localhost/test');
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 //handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
+db.once('open', () => {
   // we're connected!
 });
 
@@ -109,24 +109,24 @@ app.post('/addinfo/delete/38132874', (req, res) => {
 }); 
 
 
-app.get('/sign_up', function (req, res, next) {
+app.get('/sign_up', (req, res, next) => {
 	res.sendFile(__dirname + '/static/sign_up.html')
 });
   
-app.post('/sign_up', function (req, res, next) {
+app.post('/sign_up', (req, res, next) => {
 	if (req.body.name &&
 	  req.body.username &&
 	  req.body.password &&
 	  req.body.phone) {
 
-		var userData = {
+		const userData = {
 			name: req.body.name,
 			username: req.body.username,
 			password: req.body.password,
 			phone: req.body.phone
 		}
   
-		User.create(userData, function (error, user) {
+		User.create(userData, (error, user) => {
 			if (error) {
 				return next(error);
 			} else {
@@ -140,7 +140,7 @@ app.post('/sign_up', function (req, res, next) {
 	else if (req.body.logusername && req.body.logpassword) {
 		User.authenticate(req.body.logusername, req.body.logpassword, function (error, user) {
 			if (error || !user) {
-				var err = new Error('Wrong email or password.');
+				const err = new Error('Wrong email or password.');
 				err.status = 401;
 				return next(err);
 			} else {
@@ -151,17 +151,17 @@ app.post('/sign_up', function (req, res, next) {
 		});
 	}
 	else {
-		var err = new Error('All fields required.');
+		const err = new Error('All fields required.');
 		err.status = 400;
 		return next(err);
 	}
   })
   
   // GET for logout logout ::: TODO later
-  app.get('/logout', function (req, res, next) {
+  app.get('/logout', (req, res, next) => {
 		if (req.session) {
 			// delete session object
-			req.session.destroy(function (err) {
+			req.session.destroy((err) => {
 				if (err) {
 					return next(err);
 				} else {
