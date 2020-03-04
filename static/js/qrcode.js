@@ -27,9 +27,7 @@ button.onclick = () => {
 
 			//Using instascan now - very nice
 			const scanner = new Instascan.Scanner({ 'video': video, 'mirror': false });
-			scanner.addListener('scan', (content) => {
-				console.log(content);
-			});
+			scanner.addListener('scan', link => result(link));
 			Instascan.Camera.getCameras().then((cameras) => {
 				cameras.length > 0 ? scanner.start(cameras[0]) : console.error('No cameras found.');
 			}).catch((e) => {
