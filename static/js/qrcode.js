@@ -1,6 +1,4 @@
-import QrScanner from "../qr-scanner.min.js";
-
-const upfile  = document.getElementById('upfile')
+const upfile  = document.getElementById('capture')
 const image  = document.getElementById('qrcode');
 const display = document.getElementById('display');
 
@@ -8,19 +6,24 @@ const result = (link) => {
         console.log(link);
         window.location.replace(link);
 }
-
 image.onclick = () => {
-        document.getElementById("upfile").click();
+	upfile.click();
 }
 
-upfile.onchange = (obj) => {
-        var file = upfile.value;
-        var fileName = file.split("\\");
-        document.getElementById("qrcode").innerHTML = fileName[fileName.length - 1];
-        event.preventDefault();
-
-        QrScanner.scanImage(file)
-                .then(link => result(link))
-                .catch(error => console.log(error || 'No QR code found.'));
+const openQRCamera = (node) => {
+	var reader = new FileReader();
+	reader.onload = function() {
+		node.value = "";
+		qrcode.callback = function(res) {
+			if(res instanceof Error) {
+				alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+			} else {
+				console.log(res);
+				result(res);
+			}
+		};
+		qrcode.decode(reader.result);
+	};
+	reader.readAsDataURL(node.files[0]);
 }
 

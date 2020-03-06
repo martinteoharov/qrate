@@ -112,8 +112,8 @@
                                                                 <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.4s">
                                                                         <div class="form-inline">
                                                                                 <div class="form-group">
-                                                                                        <button type="livedemo" name="Live Demo" class="btn btn-primary btn-lg" id="qrcode">QR Code</button>
-                                                                                        <div style='height: 0px;width: 0px; overflow:hidden;'><input id="upfile" type="file" value="upload"/></div>
+											<button type="livedemo" name="Live Demo" class="btn btn-primary btn-lg" id="qrcode">QR Code</button>
+                                                                                        <div style='height: 0px;width: 0px; overflow:hidden;'><input id='capture' type=file accept="image/*" capture=environment onchange="openQRCamera(this);"/></div>
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                         <button type="getnow" name="Get Now" class="btn btn-primary btn-lg" required="required">2D model</button>
@@ -142,7 +142,25 @@
 			<script src='js/common.js'></script>
 			<script src='js/instascan.js'></script>
 			
-			<script type='module' src='js/qrcode.js'></script>
+
+			<script type="text/javascript" src="js/jsqrcode/src/grid.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/version.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/detector.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/formatinf.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/errorlevel.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/bitmat.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/datablock.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/bmparser.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/datamask.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/rsdecoder.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/gf256poly.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/gf256.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/decoder.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/qrcode.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/findpat.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/alignpat.js"></script>
+			<script type="text/javascript" src="js/jsqrcode/src/databr.js"></script>
+			<script src='js/qrcode.js'></script>
 
 			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 			<script src="js/jquery.min.js"></script>
