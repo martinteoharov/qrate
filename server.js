@@ -9,8 +9,8 @@ const mongoose = require('mongoose');
 //set up mongo client
 const MongoClient  = require('mongodb').MongoClient;
 const url          = 'mongodb://localhost/test';
-const User = require('./static/js/galleryUser');
-const session = require('express-session');
+var User = require('./static/js/galleryUser');
+var session = require('express-session');
 let collection;
 
 MongoClient.connect(url, (err, cli) => {
@@ -23,11 +23,11 @@ MongoClient.connect(url, (err, cli) => {
 });
 
 mongoose.connect('mongodb://localhost/test');
-const db = mongoose.connection;
+var db = mongoose.connection;
 
 //handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
+db.once('open', function () {
   // we're connected!
 });
 
@@ -69,7 +69,8 @@ app.get('/exponent/:id', (req, res) => {
 
 app.get('/addinfo', (req, res) => {
 	//TODO: security & data validity check
-	req.query.pass == 38132874 ? res.sendFile(__dirname + '/static/addinfo.html') : null;
+	//req.query.pass == 38132874 ?
+	 res.sendFile(__dirname + '/static/addinfo.html');
 	
 });
 app.get('/addinfo/list/38132874', (req, res) => {
@@ -109,24 +110,24 @@ app.post('/addinfo/delete/38132874', (req, res) => {
 }); 
 
 
-app.get('/sign_up', (req, res, next) => {
+app.get('/sign_up', function (req, res, next) {
 	res.sendFile(__dirname + '/static/sign_up.html')
 });
   
-app.post('/sign_up', (req, res, next) => {
+app.post('/sign_up', function (req, res, next) {
 	if (req.body.name &&
 	  req.body.username &&
 	  req.body.password &&
 	  req.body.phone) {
 
-		const userData = {
+		var userData = {
 			name: req.body.name,
 			username: req.body.username,
 			password: req.body.password,
 			phone: req.body.phone
 		}
   
-		User.create(userData, (error, user) => {
+		User.create(userData, function (error, user) {
 			if (error) {
 				return next(error);
 			} else {
@@ -140,28 +141,28 @@ app.post('/sign_up', (req, res, next) => {
 	else if (req.body.logusername && req.body.logpassword) {
 		User.authenticate(req.body.logusername, req.body.logpassword, function (error, user) {
 			if (error || !user) {
-				const err = new Error('Wrong email or password.');
+				var err = new Error('Wrong email or password.');
 				err.status = 401;
 				return next(err);
 			} else {
 				req.session.userId = user._id;
 				console.log("Logged: "  + user);
-				return res.redirect('/gallery');
+				res.json({"logged" : true});
 			}
 		});
 	}
 	else {
-		const err = new Error('All fields required.');
+		var err = new Error('All fields required.');
 		err.status = 400;
 		return next(err);
 	}
   })
   
   // GET for logout logout ::: TODO later
-  app.get('/logout', (req, res, next) => {
+  app.get('/logout', function (req, res, next) {
 		if (req.session) {
 			// delete session object
-			req.session.destroy((err) => {
+			req.session.destroy(function (err) {
 				if (err) {
 					return next(err);
 				} else {

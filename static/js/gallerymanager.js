@@ -34,8 +34,9 @@ logInBtn.onclick = () => {
         const url = '/sign_up';
         const items = {logusername: userVal, logpassword: passwordVal};
         fetchPost(url, items).then((res) => {
-            if(res.status === 200){
+            if(res.logged === true){
                 newNoty('success', 'Loged');
+                location.href = "/addinfo";
             }
             else {
                 newNoty('error', 'Could Not Be Loged');

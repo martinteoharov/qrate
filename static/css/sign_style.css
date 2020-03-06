@@ -1,7 +1,7 @@
 .main_sign_up{ 
     padding:20px; 
     font-family: 'Helvetica', serif; 
-    box-shadow: 5px 5px 7px 5px #65AAF0; 
+    border: 5px solid #65AAF0; 
       
 } 
 .main_sign_up h1{ 
