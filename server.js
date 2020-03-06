@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 //set up mongo client
 const MongoClient  = require('mongodb').MongoClient;
 const url          = 'mongodb://localhost/test';
-var User = require('./static/js/galleryUser');
+const User = require('./static/js/galleryUser');
 var session = require('express-session');
 let collection;
 
@@ -81,7 +81,11 @@ app.get('/addinfo/list/38132874', (req, res) => {
 app.post('/addinfo/38132874', (req, res) => {
 	//TODO: security & data validity check
 	console.log('insert new element with id:', req.body.id);
-	collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
+	User.logById(req.session.userId, function (error, user) {
+		user.paintings.push(req.body.id);
+		collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
+		console.log(user);
+	});
 	res.json({status:200});
 });
 app.post('/addinfo/change/38132874', (req, res) => {

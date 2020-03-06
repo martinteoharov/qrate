@@ -22,7 +22,8 @@ var UserSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: true,
-    }
+    },
+    paintings : [String]
 });
 
 UserSchema.statics.authenticate = function (username, password, callback) {
@@ -43,6 +44,17 @@ UserSchema.statics.authenticate = function (username, password, callback) {
           }
         })
       });
+}
+
+UserSchema.statics.logById = function(userId, callback){
+    User.findOne({ _id: userId }).exec(function (err, user) {
+      if(err){
+        return callback(err);
+      }
+      else{
+        return callback(null, user)  
+      }
+    }); 
 }
 
 //hashing a password before saving it to the database
