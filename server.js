@@ -69,7 +69,8 @@ app.get('/exponent/:id', (req, res) => {
 
 app.get('/addinfo', (req, res) => {
 	//TODO: security & data validity check
-	req.query.pass == 38132874 ? res.sendFile(__dirname + '/static/addinfo.html') : null;
+	//req.query.pass == 38132874 ? res.sendFile(__dirname + '/static/addinfo.html') : null;
+	res.sendFile(__dirname + '/static/addinfo.html');
 	
 });
 app.get('/addinfo/list/38132874', (req, res) => {
