@@ -74,18 +74,38 @@ app.get('/addinfo', (req, res) => {
 	
 });
 app.get('/addinfo/list/38132874', (req, res) => {
-	const data = collection.find().toArray((err, docs) => {
-		res.json({body:docs});
+	User.findOne({ _id: req.session.userId }).exec(function (err, user) {
+		console.log(user.paintings);
+		var listArray = [];
+		collection.find().toArray((err, docs) => {
+			docs.forEach(element => {
+				console.log(element.id);
+				if(user.paintings.find(value => value == element.id)){
+					listArray.push(element);
+				}
+			})
+			res.json({body:listArray});
+		});
 	});
+	
 });
 app.post('/addinfo/38132874', (req, res) => {
 	//TODO: security & data validity check
 	console.log('insert new element with id:', req.body.id);
-	User.logById(req.session.userId, function (error, user) {
-		user.paintings.push(req.body.id);
-		collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
-		console.log(user);
-	});
+	User.updateOne(
+		{ _id: req.session.userId },
+		{
+			$push: {
+				paintings: req.body.id
+			}
+		}
+		, function(err){
+			if(err){
+				return err;
+			}
+		}
+	);
+	collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
 	res.json({status:200});
 });
 app.post('/addinfo/change/38132874', (req, res) => {
