@@ -25,7 +25,7 @@ button.onclick = () => {
 			EPPZScrollTo.scrollVerticalToElementById('scanner', 0);
 
 			//Using instascan now - very nice
-			const scanner = new Instascan.Scanner({ 'video': video, 'mirror': false });
+			const scanner = new Instascan.Scanner({ 'video': video, 'mirror': false, 'facingMode':'environment' });
 			scanner.addListener('scan', link => result(link));
 			Instascan.Camera.getCameras().then((cameras) => {
 				if (cameras.length > 0) {
