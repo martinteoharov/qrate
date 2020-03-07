@@ -79,7 +79,6 @@ app.get('/addinfo/list/38132874', (req, res) => {
 		let listArray = [];
 		collection.find().toArray((err, docs) => {
 			docs.forEach(element => {
-				console.log(element.id);
 				if(user.paintings.find(value => value == element.id)){
 					listArray.push(element);
 				}
@@ -128,6 +127,19 @@ app.post('/addinfo/delete/38132874', (req, res) => {
 	collection.remove(
 		{id: req.body.id},
 		{justOne: true}
+	)
+	User.updateOne(
+		{_id: req.session.userId},
+		{
+			$pull: {
+				paintings:req.body.id
+			}
+		}
+		, (err) => {
+			if(err){
+				return err;
+			}
+		}
 	)
 	res.json({status:200});
 }); 
