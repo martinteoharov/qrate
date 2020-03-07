@@ -11,14 +11,15 @@ image.onclick = () => {
 }
 
 const openQRCamera = (node) => {
-	var reader = new FileReader();
-	reader.onload = function() {
+	let reader = new FileReader();
+	reader.onload = () => {
 		node.value = "";
-		qrcode.callback = function(res) {
+		qrcode.callback = (res) => {
 			if(res instanceof Error) {
 				alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+				newNoty('error', "No QR code found. Please make sure the QR code is within the camera's frame and try again.'");
 			} else {
-				console.log(res);
+				newNoty('success', "Redirecting...");
 				result(res);
 			}
 		};
