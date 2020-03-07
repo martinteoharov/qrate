@@ -1,9 +1,9 @@
 import QrScanner from "../qr-scanner.min.js";
 
-const upfileBtn = document.getElementById('capture')
+const upfileBtn = document.getElementById('capture');
 const imageBtn  = document.getElementById('qrcode');
-const videoBtn  = document.getElementById('qrcode-vid')
-const videoDom  = document.getElementById('scanner')
+const videoBtn  = document.getElementById('qrcode-vid');
+const videoDom  = document.getElementById('scanner');
 const display   = document.getElementById('display');
 
 const result = (link) => {
@@ -11,18 +11,24 @@ const result = (link) => {
         window.location.replace(link);
 }
 
+upfileBtn.onchange = () => {
+	openQRCamera(upfileBtn);
+}
 imageBtn.onclick = () => {
 	upfileBtn.click();
 }
 
 videoBtn.onclick = () => {
 	console.log('video scan:');
-	const videoConstraints = {
-		facingMode:'environment'
-	};
 
 	const constraints = {
-		video: videoConstraints,
+		video: {
+			width: 1280,
+			height: 720,
+			facingMode: {
+				ideal: 'environment'
+			}
+		},
 		audio: false
 	};
 
@@ -33,7 +39,7 @@ videoBtn.onclick = () => {
 			videoDom.srcObject = stream;
 
 			EPPZScrollTo.scrollVerticalToElementById('scanner', 0);
-			const scanner = new QrScanner(videoDom, result => display.innerText = result, 480);
+			const scanner = new QrScanner(videoDom, link => result(link), 720);
 			scanner.start();
 		})
 		.catch(error => {
