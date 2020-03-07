@@ -9,8 +9,8 @@ const mongoose = require('mongoose');
 //set up mongo client
 const MongoClient  = require('mongodb').MongoClient;
 const url          = 'mongodb://localhost/test';
-const User = require('./static/js/galleryUser');
-var session = require('express-session');
+const User         = require('./static/js/galleryUser');
+const session      = require('express-session');
 let collection;
 
 MongoClient.connect(url, (err, cli) => {
@@ -22,13 +22,13 @@ MongoClient.connect(url, (err, cli) => {
 	collection.createIndex({'id': 1}, {unique: true});
 });
 
-mongoose.connect('mongodb://localhost/test');
-var db = mongoose.connection;
+mongoose.connect(url);
+const db = mongoose.connection;
 
 //handle mongo error
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function () {
-  // we're connected!
+db.once('open', () => {
+	// we're connected!
 });
 
 
@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 app.use(express.static('static'));
 app.use(express.static('node_modules/qr-scanner'));
 app.use(express.static('node_modules/noty'));
- 
+
 app.use(session({
 	secret: 'work hard',
 	resave: true,
@@ -70,13 +70,13 @@ app.get('/exponent/:id', (req, res) => {
 app.get('/addinfo', (req, res) => {
 	//TODO: security & data validity check
 	//req.query.pass == 38132874 ?
-	 res.sendFile(__dirname + '/static/addinfo.html');
-	
+	res.sendFile(__dirname + '/static/addinfo.html');
+
 });
 app.get('/addinfo/list/38132874', (req, res) => {
-	User.findOne({ _id: req.session.userId }).exec(function (err, user) {
+	User.findOne({ _id: req.session.userId }).exec((err, user) => {
 		console.log(user.paintings);
-		var listArray = [];
+		let listArray = [];
 		collection.find().toArray((err, docs) => {
 			docs.forEach(element => {
 				console.log(element.id);
@@ -87,7 +87,6 @@ app.get('/addinfo/list/38132874', (req, res) => {
 			res.json({body:listArray});
 		});
 	});
-	
 });
 app.post('/addinfo/38132874', (req, res) => {
 	//TODO: security & data validity check
@@ -99,7 +98,7 @@ app.post('/addinfo/38132874', (req, res) => {
 				paintings: req.body.id
 			}
 		}
-		, function(err){
+		, (err) => {
 			if(err){
 				return err;
 			}
@@ -134,24 +133,24 @@ app.post('/addinfo/delete/38132874', (req, res) => {
 }); 
 
 
-app.get('/sign_up', function (req, res, next) {
+app.get('/sign_up', (req, res, next) => {
 	res.sendFile(__dirname + '/static/sign_up.html')
 });
-  
-app.post('/sign_up', function (req, res, next) {
-	if (req.body.name &&
-	  req.body.username &&
-	  req.body.password &&
-	  req.body.phone) {
 
-		var userData = {
+app.post('/sign_up', (req, res, next) => {
+	if (req.body.name &&
+		req.body.username &&
+		req.body.password &&
+		req.body.phone) {
+
+		const userData = {
 			name: req.body.name,
 			username: req.body.username,
 			password: req.body.password,
 			phone: req.body.phone
 		}
-  
-		User.create(userData, function (error, user) {
+
+		User.create(userData, (error, user) => {
 			if (error) {
 				return next(error);
 			} else {
@@ -160,12 +159,12 @@ app.post('/sign_up', function (req, res, next) {
 				return res.redirect('/gallery');
 			}
 		});
-  
+
 	} 
 	else if (req.body.logusername && req.body.logpassword) {
-		User.authenticate(req.body.logusername, req.body.logpassword, function (error, user) {
+		User.authenticate(req.body.logusername, req.body.logpassword, (error, user) => {
 			if (error || !user) {
-				var err = new Error('Wrong email or password.');
+				const err = new Error('Wrong email or password.');
 				err.status = 401;
 				return next(err);
 			} else {
@@ -176,26 +175,26 @@ app.post('/sign_up', function (req, res, next) {
 		});
 	}
 	else {
-		var err = new Error('All fields required.');
+		const err = new Error('All fields required.');
 		err.status = 400;
 		return next(err);
 	}
-  })
-  
-  // GET for logout logout ::: TODO later
-  app.get('/logout', function (req, res, next) {
-		if (req.session) {
-			// delete session object
-			req.session.destroy(function (err) {
-				if (err) {
-					return next(err);
-				} else {
-					return res.redirect('/index');
-				}
-			});
-		}
-  });
-  
+})
+
+// GET for logout logout ::: TODO later
+app.get('/logout', (req, res, next) => {
+	if (req.session) {
+		// delete session object
+		req.session.destroy((err) => {
+			if (err) {
+				return next(err);
+			} else {
+				return res.redirect('/index');
+			}
+		});
+	}
+});
+
 
 const server = app.listen(port, () => {
 	console.log('listening on', port);
