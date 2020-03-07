@@ -16,8 +16,7 @@ const openQRCamera = (node) => {
 		node.value = "";
 		qrcode.callback = (res) => {
 			if(res instanceof Error) {
-				alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
-				newNoty('error', "No QR code found. Please make sure the QR code is within the camera's frame and try again.'");
+				newNoty('error', "No QR code found. Please move farther away from the subject.'");
 			} else {
 				newNoty('success', "Redirecting...");
 				result(res);
