@@ -149,18 +149,30 @@ app.get('/sign_up', (req, res, next) => {
 	res.sendFile(__dirname + '/static/sign_up.html')
 });
 
+app.get('/log_in', (req, res, next) => {
+	res.sendFile(__dirname + '/static/log_in.html')
+});
+
 app.post('/sign_up', (req, res, next) => {
 	if (req.body.name &&
-		req.body.username &&
-		req.body.password &&
-		req.body.phone) {
+		req.body.email &&
+		req.body.address &&
+		req.body.phone &&
+		req.body.about) {
+
+		const usernameVal = req.body.email.substring(0, req.body.email.indexOf("@"));	
 
 		const userData = {
 			name: req.body.name,
-			username: req.body.username,
-			password: req.body.password,
-			phone: req.body.phone
+			email: req.body.email,
+			username: usernameVal,
+			password:	Math.floor(Math.random()* 10000000),
+			address: req.body.address,
+			phone: req.body.phone,
+			about: req.body.about
 		}
+
+		console.log(userData.password);
 
 		User.create(userData, (error, user) => {
 			if (error) {
@@ -168,23 +180,31 @@ app.post('/sign_up', (req, res, next) => {
 			} else {
 				req.session.userId = user._id;
 				console.log("Signed: "  + user)
-				return res.redirect('/gallery');
 			}
 		});
 
 	} 
-	else if (req.body.logusername && req.body.logpassword) {
-		User.authenticate(req.body.logusername, req.body.logpassword, (error, user) => {
-			if (error || !user) {
-				const err = new Error('Wrong email or password.');
-				err.status = 401;
-				return next(err);
-			} else {
-				req.session.userId = user._id;
-				console.log("Logged: "  + user);
-				res.json({"logged" : true});
-			}
-		});
+	else {
+		const err = new Error('All fields required.');
+		err.status = 400;
+		return next(err);
+	}
+})
+
+app.post('/log_in', (req, res, next) => {
+	if (req.body.logusername &&
+		req.body.logpassword) {
+			User.authenticate(req.body.logusername, req.body.logpassword, (error, user) => {
+				if (error || !user) {
+					const err = new Error('Wrong email or password.');
+					err.status = 401;
+					return next(err);
+				} else {
+					req.session.userId = user._id;
+					console.log("Logged: "  + user);
+					res.json({"logged" : true});
+				}
+			});
 	}
 	else {
 		const err = new Error('All fields required.');
