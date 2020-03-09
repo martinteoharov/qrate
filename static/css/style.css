@@ -19,7 +19,7 @@ body {
 	line-height:1.6em;
 	color:#fff;
 	background-color:#fff;
-	overflow-x:hidden;
+  overflow-x:hidden;
 }
 
 hi,h2,h3,h4,h5,h6 {
@@ -910,115 +910,6 @@ textarea#message{
 /*===========================
   Footer
 ============================ */
-footer {
-	padding:50px;
-	background:#65AAF0;
-}
-
-footer p {
-	color:#fff;
-}
-
-footer h4 {
-	margin-bottom:30px;
-	text-transform:uppercase;
-	text-shadow:none;
-	font-weight:550;
-	color:#272727;
-}
-
-footer .btn-gamp a {
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: #fff;
-	width: 180px;
-	height: 60px;
-	text-align: center;
-	display: inline-block;
-	line-height: 45px;
-	margin-right:170px;
-	margin-top:20px;
-	background:#272727;
-	border: 1px solid #fff;
-	border-radius:0px;
-}
-
-footer .btn-gamp a:hover {
-	background:#fff;
-	color:#272727;
-	opacity: 0.8;
-	transition: all 0.5s;
-}
-
-footer .btn-gamp input {
-	font-size: 12px;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	color: #272727;
-	width: 180px;
-	height: 60px;
-	text-align: center;
-	display: inline-block;
-	line-height: 56px;
-	border-radius:0px;
-	border: 1px solid #fff;
-}
-
-.contact-info {
-	color:#fff;
-}
-
-.contact-info ul {
-	list-style:none;
-	padding-left: 0;
-}
-
-.contact-info ul li i {
-	margin-bottom:20px;
-}
-
-.widget {
-  padding-left: 0;
-}
-
-ul.sidebar-gallery {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-}
-
-.sidebar-gallery li {
-  display: inline-block;
-  margin: 0 10px 10px 0;
-   border-radius:0px;
-}
-
-.sidebar-gallery li a {
-  display: inline-block;
-}
-
-ul.social-network {
-	list-style:none;
-	margin-top:20px;
-	padding:10px;
-	transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-}
-.sub-footer  {
-	background:#272727;
-	padding:30px;
-}
-
-ul.social-network li {
-	display:inline;
-	margin: 0 50px;
-	font-size:25px;
-	margin-left:-10px;
-}
 
 ul.social-network li a {
 	color:#d0d0d0;
@@ -1058,4 +949,37 @@ ul.social-network li a {
 	font-weight:600;
 	font-size:12px;
 	text-shadow:none;
+}
+
+footer{
+  position: relative;
+  height: 120px;
+  left: 0;
+  bottom: 0;
+  margin-top:0px;
+  padding-top: 0px;
+  width: 100%;
+  background: #65AAF0;
+  text-align: center;
+}
+ul.footer_menu{
+  float: right;
+  list-style-type: none;
+  padding: 5px;
+  width: 20%;
+}
+li.footer_button{
+  padding: 5px;
+}
+
+li.footer_button a{
+  font-size:12px;
+	text-transform:uppercase;
+  font-weight:600;
+  color: white;
+  padding: 5%;
+}
+
+li.footer_button :hover{
+  color:#272727;
 }
