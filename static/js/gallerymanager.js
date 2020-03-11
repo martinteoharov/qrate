@@ -1,14 +1,15 @@
-const submitDetailsBtn = document.getElementById("saveUserBtn");
-const logInBtn = document.getElementById("logInBtn");
+const submitDetailsBtn = document.getElementById("sendRequestBtn");
+const logInBtnRedirect = document.getElementById("logInBtnRedirect");
 
 submitDetailsBtn.onclick = () => {
     const nameVal = document.getElementById("name").value;
-    const userVal = document.getElementById("username").value;
-    const passwordVal = document.getElementById("password").value;
+    const emailVal = document.getElementById("email").value;
+    const addressVal = document.getElementById("address").value;
     const phoneVal = document.getElementById("phone").value;
+    const aboutVal = document.getElementById("sign_up_text_area").value;
 
     const url = '/sign_up';
-	const items = {name: nameVal, username: userVal, password: passwordVal, phone: phoneVal};
+	const items = {name: nameVal, email: emailVal, address: addressVal, phone: phoneVal, about: aboutVal};
 	fetchPost(url, items).then((res) => {
 		if(res.status === 200){
             newNoty('success', 'Saved');
@@ -19,29 +20,6 @@ submitDetailsBtn.onclick = () => {
     });
 }
 
-logInBtn.onclick = () => {
-    const name = document.getElementById("name");
-    const phone = document.getElementById("phone");
-
-    name.style.display = 'none';
-    phone.style.display = 'none';
-    submitDetailsBtn.style.display = 'none';
-
-    logInBtn.onclick = () => {
-        const userVal = document.getElementById("username").value;
-        const passwordVal = document.getElementById("password").value;
-
-        const url = '/sign_up';
-        const items = {logusername: userVal, logpassword: passwordVal};
-        fetchPost(url, items).then((res) => {
-            if(res.logged === true){
-                newNoty('success', 'Loged');
-                location.href = "/addinfo";
-            }
-            else {
-                newNoty('error', 'Could Not Be Loged');
-            }
-        });
-    }
-
+logInBtnRedirect.onclick = () => {
+    location.href="/log_in";
 }

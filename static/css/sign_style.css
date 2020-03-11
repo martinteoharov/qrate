@@ -1,7 +1,8 @@
 .main_sign_up{ 
     padding:20px; 
     font-family: 'Helvetica', serif; 
-    border: 5px solid #65AAF0; 
+    width: 70%;
+    margin-left: 15%;
       
 } 
 .main_sign_up h1{ 
@@ -11,6 +12,10 @@
     color: black; 
       
 } 
+.main_sign_up h3{
+    text-align:center; 
+    font-family: 'Helvetica', serif; 
+}
 input{ 
     color: black; 
     font-family: 'Helvetica', serif; 
@@ -31,3 +36,13 @@ input[type=submit] {
     margin: 4px 2px; 
     border-radius: 10px; 
 } 
+
+#sign_up_text_area{
+    color: black;
+    font-family: 'Helvetica', serif; 
+    width: 100%; 
+    font-size: 20px; 
+    padding: 12px 20px; 
+    margin: 8px 0; 
+    border: 2px solid #65AAF0 ;
+}

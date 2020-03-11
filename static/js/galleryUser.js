@@ -7,6 +7,12 @@ var UserSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true
+    },
     username: {
         type: String,
         unique: true,
@@ -19,9 +25,16 @@ var UserSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    address: {
+        type: String,
+        required: true
+    },
     phone: {
         type: String,
         required: true,
+    },
+    about: {
+        type: String
     },
     paintings : [String]
 });
