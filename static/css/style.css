@@ -81,11 +81,7 @@ a:hover {
 	font-weight:600;
 }
 
-@media (max-width: 767px) {
-  .navbar-brand {
-    padding: 0 0 0 15px;
-  }
-}
+
 
 .menu {
 	height:100%;
@@ -106,8 +102,6 @@ a:hover {
 	}
 	.nav-tabs > li {
 		width: 33.3%;
-	}
-	.nav-tabs > li > a {
 	}
 }
 
@@ -138,9 +132,18 @@ a:hover {
 }
 
 .nav-tabs > li > a {
+  margin: 0px;
+  text-align: center;
 	border-radius:0;
 	color:#fff;
 	padding: 20px 35px;
+}
+
+.nav-tabs > li > a#center{
+  margin-left: 0px;
+  margin-right: 0px;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
 }
 
 .nav-tabs > li > a:hover {
