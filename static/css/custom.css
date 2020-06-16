@@ -1,20 +1,99 @@
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #333;
+
+.wrap {
+	display: table;
+	border-collapse: collapse;
+	width: 100%;
 }
 
-li {
-	float: left;
-	width: 33.3%;
+.header-logo,
+.header-menu {
+	display: table-cell;
 }
 
-li > a {
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 15px 15px;
-	text-decoration: none;
+.header-logo {
+	width: 30%;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.header-menu {
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+	.header-logo {
+		display: table-header-group;
+		width: 100%;
+	}
+	.header-menu {
+		display: table-footer-group;
+		width: 100%;
+	}
+	.nav-tabs > li {
+		float: right;
+		width:33%;
+		height:100%;
+		margin-bottom: 0;
+	}
+
+}
+#header-img {
+	background-image: url("../img/header-strip.jpg");
+	background-size: cover;
+	height:250px; !important
+}
+#main-img {
+
+	height: auto;
+	width:100%;
+}
+
+@media screen and (max-width: 767px) {
+	#main-img{
+		background-size: cover;
+		background-image: url('../img/qrate_photo.jpg');
+		height: 700px;
+	}
+	#header-img {
+		background-image: url("../img/header-strip.jpg");
+		background-size: cover;
+		height:190px; !important
+	}
+	.header-logo {
+		padding-left: 20%;
+		padding-top:20%;
+	}
+	.nav-tabs > li > a {
+		font-size: 12px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	#main-img{
+		background-image: url('../img/qrate_horizontal.jpg');
+		background-size: cover;
+		height:450px;
+	}
+}
+@media (min-width: 992px) {
+	#main-img{
+		background-image: url('../img/qrate_horizontal.jpg');
+		background-size: cover;
+		height:500px;
+	}
+
+}
+@media (min-width: 1200px) {
+	#main-img{
+		background-image: url('../img/qrate_horizontal.jpg');
+		background-size: cover;
+		height:600px;
+	}
+}
+@media (min-width: 1400px) {
+	#main-img{
+		background-image: url('../img/qrate_horizontal.jpg');
+		background-size: cover;
+		height:800px;
+	}
 }

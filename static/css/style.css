@@ -86,7 +86,7 @@ a:hover {
 .menu {
 	height:100%;
 	font-size:12px;
-	float:left;
+	float:right;
 	padding-left:20px;
 	text-transform:uppercase;
 	font-weight:600;
@@ -94,6 +94,7 @@ a:hover {
 
 @media (max-width: 767px) {
 	.menu {
+		margin-top: 20px;
 		font-size: 10px;
 		float:left;
 		width:100%;
@@ -125,16 +126,18 @@ a:hover {
 
 .nav-tabs {
 	border-bottom: 0;
+	margin:auto;
 	width:100%;
-	height: 100%;
 }
 .nav-tabs > li {
-	float: left;
+	float: right;
+	width:15%;
 	margin-bottom: 0;
 }
 
 .nav-tabs > li > a {
   margin: 0px;
+  font-size: 16px;
   text-align: center;
 	border-radius:0;
 	color:#fff;
@@ -144,8 +147,6 @@ a:hover {
 .nav-tabs > li > a#center{
   margin-left: 0px;
   margin-right: 0px;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
 }
 
 .nav-tabs > li > a:hover {
@@ -157,7 +158,8 @@ a:hover {
 	color: #555;
 	cursor: default;
 	background-color: #fff;
-	border-bottom-color:#fff;
+	opacity: 0.4;
+	border-bottom-color:#000;
 }
 
 .navbar-default {

@@ -18,6 +18,7 @@
 		<link rel="stylesheet" href="css/animate.css">
 		<link href="css/animate.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/custom.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -25,74 +26,17 @@
 
 
 
-		<style>
-	#header-img {
-		background-image: url("img/header-strip.jpg");
-		background-size: cover;
-		height:250px; !important
-	}
-	#header-logo {
-		height: 60%;
-		padding-left: 20px;
-		padding-top: 20px;
-	}
-	#main-img {
-
-		height: auto;
-		width:100%;
-	}
-
-      @media screen and (max-width: 767px) {
-	      #main-img{
-		      background-size: cover;
-		      background-image: url('img/qrate_photo.jpg');
-		      height: 700px;
-	      }
-      }
-
-      @media screen and (min-width: 768px) {
-	      #main-img{
-		      background-image: url('img/qrate_horizontal.jpg');
-		      background-size: cover;
-		      height:450px;
-	      }
-      }
-      @media (min-width: 992px) {
-	      #main-img{
-		      background-image: url('img/qrate_horizontal.jpg');
-		      background-size: cover;
-		      height:500px;
-	      }
-
-      }
-      @media (min-width: 1200px) {
-	      #main-img{
-		      background-image: url('img/qrate_horizontal.jpg');
-		      background-size: cover;
-		      height:600px;
-	      }
-      }
-      @media (min-width: 1400px) {
-	      #main-img{
-		      background-image: url('img/qrate_horizontal.jpg');
-		      background-size: cover;
-		      height:800px;
-	      }
-      }
-		</style>
 		<header>
-			<nav id="header-img">
-				<div id="header-logo">
-					<img style='width:25%;' src='img/logo-new.png'></img>
+			<nav id="header-img" class='wrap'>
+				<div class="header-logo">
+					<img style='width:80%; padding-left:10%;padding-top:5%;' src='img/logo-new.png'></img>
 				</div>
-				<div>
-					<div class="menu">
-						<ul class="nav nav-tabs" role="tablist">
-							<li><a class='active' href="index.html">Home</a></li>
-							<li><a href="about.html" id="center">About Us</a></li>
-							<li><a href="gallery.html">Gallery</a></li>
-						</ul>
-					</div>
+				<div class="header-menu menu">
+					<ul class="nav nav-tabs" role="tablist">
+						<li><a href="gallery.html">Gallery</a></li>
+						<li><a href="about.html" id="center">About Us</a></li>
+						<li><a class='active' href="index.html">Home</a></li>
+					</ul>
 				</div>
 				<!--/.container-->
 			</nav>

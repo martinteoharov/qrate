@@ -14,26 +14,22 @@
 		<link rel="stylesheet" href="css/animate.css">
 		<link href="css/animate.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" />
+		<link href="css/custom.css" rel="stylesheet" />
+		<link href="css/footer.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<header id="header">
-			<nav class="navbar navbar-default navbar-static-top" role="banner">
-				<div class="container">
-					<div class="navbar-header" style='height:8rem; padding-left:15px;'>
-						<div class="navbar-brand">
-							<a href="index.html"><h1>QRate</h1></a>
-						</div>
-					</div>
-					<div class="navbar-default">
-						<div class="menu">
-							<ul class="nav nav-tabs" role="tablist">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html" id="center">About Us</a></li>
-								<li><a class="active" href="gallery.html">Gallery</a></li>
-							</ul>
-						</div>
-					</div>
+		<header>
+			<nav id="header-img" class='wrap'>
+				<div class="header-logo">
+					<img style='width:80%; padding-left:10%;padding-top:5%;' src='img/logo-new.png'></img>
+				</div>
+				<div class="header-menu menu">
+					<ul class="nav nav-tabs" role="tablist">
+						<li><a class='active' href="gallery.html">Gallery</a></li>
+						<li><a href="about.html" id="center">About Us</a></li>
+						<li><a href="index.html">Home</a></li>
+					</ul>
 				</div>
 				<!--/.container-->
 			</nav>
@@ -106,13 +102,67 @@
 			</div>
 		</div>
 
-		<footer>
-			<ul class="footer_menu">
-				<li class="footer_button"><a href="contact.html">Contact</a></li>
-				<li class="footer_button"><a href="sign_up.html">Membership</a></li>
-				<li class="footer_button"><a href="log_in.html">Log In</a></li>
-			</ul>
+		<footer id="footer" class="footer-1">
+			<div class="main-footer widgets-dark typo-light">
+				<div class="container">
+					<div class="row">
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="widget subscribe no-box">
+								<h5 class="widget-title">QRATE<span></span></h5>
+								<p style='text-align:center'>Info about the company, what we do, how to register etc. </p>
+								<ul class="thumbnail-widget">
+									<li>
+										<div class="thumb-content"><a href="/contact.html">Contact us</a></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="widget no-box">
+								<h5 class="widget-title">Quick Links<span></span></h5>
+								<ul class="thumbnail-widget">
+									<li>
+										<div class="thumb-content"><a href="/log_in">Log in</a></div>
+									</li>
+									<li>
+										<div class="thumb-content"><a href="/addinfo">Database manager</a></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-sm-6 col-md-3">
+							<div class="widget no-box">
+								<h5 class="widget-title">Get Started<span></span></h5>
+								<ul class="thumbnail-widget">
+									<li>
+										<div class="thumb-content"><a href="/contact.html">Contact us</a></div>
+									</li>
+									<li>
+										<div class="thumb-content"><a href="/sign_up">Register now</a></div>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+
+			<div class="footer-copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<p>Qrate © 2020. All rights reserved.</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</footer>
+
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="js/jquery.min.js"></script>
