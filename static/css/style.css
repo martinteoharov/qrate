@@ -86,7 +86,8 @@ a:hover {
 .menu {
 	height:100%;
 	font-size:12px;
-	float:right;
+	float:left;
+	padding-left:20px;
 	text-transform:uppercase;
 	font-weight:600;
 }

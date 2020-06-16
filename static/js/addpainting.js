@@ -16,7 +16,7 @@ saveInfoBtn.onclick = () => {
 	const idVal   = idInput.value;
 
 	//send data
-	const url = '/addinfo/38132874';
+	const url = '/addinfo';
 	const items = {name: nameVal, text: boxVal, id: idVal};
 	fetchPost(url, items).then((res) => {
 		if(res.status === 200){

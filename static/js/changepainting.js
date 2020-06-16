@@ -12,9 +12,9 @@ changeInfoBtn.onclick = () => {
 	changeInfoDom.innerHTML = '';
 
 	
-	const urlLoad   = 'addinfo/list/38132874';
-	const urlUpload = 'addinfo/change/38132874';
-	const urlDelete = 'addinfo/delete/38132874';
+	const urlLoad   = 'addinfo/list';
+	const urlUpload = 'addinfo/change';
+	const urlDelete = 'addinfo/delete';
 
 	loader.style.display = '';
 	fetchGet(urlLoad).then((res) => {

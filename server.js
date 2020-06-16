@@ -68,26 +68,33 @@ app.get('/exponent/:id', (req, res) => {
 });
 
 app.get('/addinfo', (req, res) => {
-	//TODO: security & data validity check
-	//req.query.pass == 38132874 ?
-	res.sendFile(__dirname + '/static/addinfo.html');
+	const doc = User.findOne({ _id: req.session.userId });
+	if(doc.user){
+		res.sendFile(__dirname + '/static/addinfo.html');
+	}
+	else {
+		res.redirect('/log_in');
+	}
 
 });
-app.get('/addinfo/list/38132874', (req, res) => {
-	User.findOne({ _id: req.session.userId }).exec((err, user) => {
-		console.log(user.paintings);
+app.get('/addinfo/list', (req, res) => {
+	//authenticate and send list
+	const doc = User.findOne({ _id: req.session.userId });
+	if(doc.user){
+		console.log(doc.user.paintings);
 		let listArray = [];
 		collection.find().toArray((err, docs) => {
 			docs.forEach(element => {
-				if(user.paintings.find(value => value == element.id)){
+				if(doc.user.paintings.find(value => value == element.id)){
 					listArray.push(element);
 				}
 			})
 			res.json({body:listArray});
 		});
-	});
+	}
+	
 });
-app.post('/addinfo/38132874', (req, res) => {
+app.post('/addinfo', (req, res) => {
 	//TODO: security & data validity check
 	console.log('insert new element with id:', req.body.id);
 	User.updateOne(
@@ -106,7 +113,7 @@ app.post('/addinfo/38132874', (req, res) => {
 	collection.insertOne({id: req.body.id, name: req.body.name, text: req.body.text});
 	res.json({status:200});
 });
-app.post('/addinfo/change/38132874', (req, res) => {
+app.post('/addinfo/change', (req, res) => {
 	//TODO: security & data validity check
 	console.log('change element with id:', req.body.id);
 	collection.updateOne(
@@ -121,8 +128,25 @@ app.post('/addinfo/change/38132874', (req, res) => {
 	)
 	res.json({status:200});
 });
-app.post('/addinfo/delete/38132874', (req, res) => {
-	//TODO: security & data validity check
+app.post('/addinfo/delete/', (req, res) => {
+	
+	// User permissions check
+	if (req.body.logusername &&
+		req.body.logpassword) {
+			User.authenticate(req.body.logusername, req.body.logpassword, (error, user) => {
+				if (error || !user) {
+					const err = new Error('Wrong email or password.');
+					err.status = 401;
+					return next(err);
+				} else {
+					req.session.userId = user._id;
+					console.log("Logged: "  + user);
+					res.json({"logged" : true});
+				}
+			});
+	}
+
+
 	console.log('delete element with id:', req.body.id);
 	collection.remove(
 		{id: req.body.id},
