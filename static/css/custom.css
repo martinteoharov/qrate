@@ -29,6 +29,9 @@
 		display: table-footer-group;
 		width: 100%;
 	}
+	.menu{
+		padding-left: 0px;
+	}
 	.nav-tabs > li {
 		float: right;
 		width:33%;
@@ -38,7 +41,7 @@
 
 }
 #header-img {
-	background-image: url("../img/header-strip.jpg");
+	background-image: url("../img/header-strip-compressor.jpg");
 	background-size: cover;
 	height:250px; !important
 }
